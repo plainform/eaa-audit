@@ -136,7 +136,7 @@ exactly zero.
 
 ## What it covers
 
-24 rules across WCAG 2.1 A and AA, each mapped to its EN 301 549 clause. The
+23 rules across WCAG 2.1 A and AA, each mapped to its EN 301 549 clause. The
 full list — including an explicit account of **what is not covered and why** —
 is in [`skills/eaa-audit/references/ruleset.md`](skills/eaa-audit/references/ruleset.md).
 

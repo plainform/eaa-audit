@@ -9,6 +9,7 @@
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { readFileSync } from 'node:fs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const detector = join(here, '..', 'skills', 'eaa-audit', 'scripts', 'detect.mjs');
@@ -56,6 +57,17 @@ for (const rule of expectedRules) check(rule, seen.has(rule) ? 1 : 0, 1);
 console.log('\nevery finding must be traceable to the standards:');
 const unmapped = all.findings.filter((f) => !f.wcag || !f.en || !f.en.startsWith('9.'));
 check('findings without a WCAG/EN mapping', unmapped.length, 0);
+
+// --- the README must not overstate what ships ------------------------------
+// It claimed 24 rules while the table defined 23. A number in the README is a
+// claim like any other, and this is the cheapest place to keep it honest.
+console.log('\nthe README rule count must match the rule table:');
+const detectorSrc = readFileSync(detector, 'utf8');
+const ruleCount = (detectorSrc.match(/^\s*R\('/gm) ?? []).length;
+const readme = readFileSync(join(here, '..', 'README.md'), 'utf8');
+const claimed = readme.match(/^(\d+) rules across WCAG/m);
+check('rules defined in detect.mjs', ruleCount, 23);
+check('rule count claimed in README', claimed ? Number(claimed[1]) : -1, ruleCount);
 
 console.log(failures.length ? `\n${failures.length} FAILED\n` : '\nall green\n');
 process.exit(failures.length ? 1 : 0);

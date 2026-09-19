@@ -79,6 +79,10 @@ you a liability — which is why overlay vendors ended up in front of regulators
 
 No legal advice either. For a legal notice, talk to a professional.
 
+If you want the regulation explained before the tool: [the European
+Accessibility Act, EN 301 549 and the clause-to-WCAG
+mapping](https://plainform.github.io/eaa/).
+
 ## Install
 
 ```

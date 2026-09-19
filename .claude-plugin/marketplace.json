@@ -5,7 +5,7 @@
     {
       "name": "eaa-audit",
       "source": "./",
-      "description": "Audit di accessibilità WCAG 2.1 AA / EN 301 549 sul sorgente, per la conformità all'European Accessibility Act."
+      "description": "Source-level WCAG 2.1 AA / EN 301 549 accessibility audit, for European Accessibility Act conformance."
     }
   ]
 }

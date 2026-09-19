@@ -120,15 +120,6 @@ exactly zero.
 full list — including an explicit account of **what is not covered and why** —
 is in [`skills/eaa-audit/references/ruleset.md`](skills/eaa-audit/references/ruleset.md).
 
-## Pro
-
-The free version tells you what is wrong. **[eaa-audit Pro →](PRO.md)** fixes it
-and produces the paperwork: framework-aware remediation, a draft accessibility
-statement generated from the actual findings, a CI regression guard, and the
-WCAG → EN 301 549 mapping laid out for an auditor.
-
-**$49, one time.** [See what is included →](PRO.md)
-
 ## License
 
 MIT. See [LICENSE](LICENSE).

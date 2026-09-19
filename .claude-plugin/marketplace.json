@@ -1,0 +1,11 @@
+{
+  "name": "eaa-audit",
+  "owner": { "name": "Plainform", "url": "https://github.com/plainform" },
+  "plugins": [
+    {
+      "name": "eaa-audit",
+      "source": "./",
+      "description": "Audit di accessibilità WCAG 2.1 AA / EN 301 549 sul sorgente, per la conformità all'European Accessibility Act."
+    }
+  ]
+}

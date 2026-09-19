@@ -7,20 +7,40 @@ A Claude Code skill that audits a web codebase against **WCAG 2.1 AA** and
 **EN 301 549** — the harmonised standard the European Accessibility Act points
 to. Zero dependencies, nothing leaves your machine.
 
+A real run, not a mock-up — this is `vercel/commerce` at its current `main`,
+and you can reproduce it in the two commands below the block:
+
 ```
 eaa-audit - WCAG 2.1 AA / EN 301 549 clause 9
-247 files scanned
+46 files scanned in ./commerce
 
-  BLOCKING 12   SERIOUS 31   MINOR 88   NEEDS REVIEW 4
+  BLOCKING 4   SERIOUS 0   MINOR 0   NEEDS REVIEW 0
 
 ── BLOCKING ──
-  src/checkout/PayButton.tsx:34   [4.1.2 A · EN 9.4.1.2]  button-no-name
-     Icon-only button (children carry no text) with no aria-label: no accessible name.
-     → Add visible text, or aria-label="action" for an icon-only button.
-  src/checkout/AddressForm.tsx:58 [3.3.2 A · EN 9.3.3.2]  input-no-label
+  components/layout/navbar/search.tsx:15  [3.3.2 A · EN 9.3.3.2]  input-no-label
      "text" field with no associated label.
      → Connect a <label for="id">, or add aria-label. A placeholder is NOT a
        label: it disappears as soon as the user types.
+  components/layout/navbar/search.tsx:34  [3.3.2 A · EN 9.3.3.2]  input-no-label
+     "text" field with no associated label.
+     → Connect a <label for="id">, or add aria-label. A placeholder is NOT a
+       label: it disappears as soon as the user types.
+  components/layout/search/filter/dropdown.tsx:41  [2.1.1 A · EN 9.2.1.1]  click-no-keyboard
+     <div> has a click handler but cannot be reached by keyboard.
+     → Use <button>. If you cannot: role="button" + tabIndex={0} + onKeyDown
+       for Enter and Space.
+  components/layout/search/filter/dropdown.tsx:51  [2.1.1 A · EN 9.2.1.1]  click-no-keyboard
+     <div> has a click handler but cannot be reached by keyboard.
+     → Use <button>. If you cannot: role="button" + tabIndex={0} + onKeyDown
+       for Enter and Space.
+
+Static subset of WCAG 2.1 AA. Automated testing covers 30-40% of the criteria.
+This does not certify conformance.
+```
+
+```bash
+git clone --depth 1 https://github.com/vercel/commerce.git
+node skills/eaa-audit/scripts/detect.mjs ./commerce
 ```
 
 ## Why this exists

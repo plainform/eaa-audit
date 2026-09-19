@@ -140,6 +140,34 @@ exactly zero.
 full list — including an explicit account of **what is not covered and why** —
 is in [`skills/eaa-audit/references/ruleset.md`](skills/eaa-audit/references/ruleset.md).
 
+## Pro
+
+Detection is the part that is free, and it stays free. What it does not do is
+write anything for you: the fix, the accessibility statement, the report an
+auditor reads, or the check that stops the next regression.
+
+**eaa-audit Pro** adds those four, all built on the JSON this detector already
+emits:
+
+| | |
+|---|---|
+| `eaa-fix` | Remediation in the idiom of your framework, with an explicit list of where it **stops** instead of guessing |
+| `statement.mjs` | Draft accessibility statement on the EU 2018/1523 model, generated from your actual findings |
+| `auditor-report.mjs` | Findings grouped by EN 301 549 clause — including the clauses with no findings, and the ones no tool can test, with the reason |
+| `guard.mjs` | CI guard that fails the build on a new violation, with a baseline keyed on file and rule rather than line |
+
+€49 once, perpetual licence for one organisation. Delivery is access to a
+private GitHub repository, granted automatically on purchase — no licence key,
+no telemetry, no network calls. Runs entirely on your machine, like the free
+tier.
+
+**[Get eaa-audit Pro →](https://buy.polar.sh/polar_cl_qjOr6PwmxxJvvXulU4CX1jfrLiBS7dBQHtThh1exxCE)**
+
+The same limit stated above applies to Pro: it is static analysis, not a
+certification service, and the statement it drafts is marked as a draft
+requiring human review. No tool can establish legal compliance, and this one
+does not claim to.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

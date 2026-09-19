@@ -9,7 +9,7 @@
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const detector = join(here, '..', 'skills', 'eaa-audit', 'scripts', 'detect.mjs');
@@ -68,6 +68,19 @@ const readme = readFileSync(join(here, '..', 'README.md'), 'utf8');
 const claimed = readme.match(/^(\d+) rules across WCAG/m);
 check('rules defined in detect.mjs', ruleCount, 23);
 check('rule count claimed in README', claimed ? Number(claimed[1]) : -1, ruleCount);
+
+// --- the npm package must ship a binary that exists ------------------------
+// eaa-lint is the npm name (eaa-audit was already taken on npm by an unrelated
+// tool). A bin pointing at a moved file is a package that installs fine and
+// fails on first run, which is the worst moment to find out.
+console.log('\nthe npm package must be coherent with the repo:');
+const pkg = JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8'));
+const plugin = JSON.parse(readFileSync(join(here, '..', '.claude-plugin', 'plugin.json'), 'utf8'));
+const binPath = join(here, '..', pkg.bin['eaa-lint'] ?? '');
+check('bin target exists', existsSync(binPath) ? 1 : 0, 1);
+check('bin target is the detector', binPath === detector ? 1 : 0, 1);
+check('package version matches plugin manifest', pkg.version === plugin.version ? 1 : 0, 1);
+check('package license matches plugin manifest', pkg.license === plugin.license ? 1 : 0, 1);
 
 console.log(failures.length ? `\n${failures.length} FAILED\n` : '\nall green\n');
 process.exit(failures.length ? 1 : 0);

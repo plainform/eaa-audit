@@ -90,11 +90,24 @@ Then just ask:
 
 > run an accessibility audit on this project
 
-Or run the detector directly — no install, no dependencies:
+### Without Claude Code
+
+The detector is a standalone CLI with zero dependencies:
+
+```bash
+npx eaa-lint ./src
+npx eaa-lint ./src --json     # for CI, or to feed another tool
+```
+
+> `eaa-lint` is the command, `eaa-audit` is the project. The obvious npm name
+> was already taken by an unrelated tool, and `lint` says the useful part
+> anyway: this reads your **source**, in the PR, before anything is deployed —
+> it does not crawl a running URL.
+
+Or straight from a clone, without npm at all:
 
 ```bash
 node skills/eaa-audit/scripts/detect.mjs ./src
-node skills/eaa-audit/scripts/detect.mjs ./src --json
 ```
 
 Requires Node 18+. Scans `.html .htm .jsx .tsx .vue .svelte .astro` and

@@ -1,0 +1,46 @@
+{
+  "name": "eaa-lint",
+  "version": "0.1.0",
+  "description": "Lint a web codebase against WCAG 2.1 AA and EN 301 549 (European Accessibility Act). Findings with file:line, mapped to the WCAG criterion and EN clause. Reads source, not rendered URLs. Zero dependencies.",
+  "bin": {
+    "eaa-lint": "skills/eaa-audit/scripts/detect.mjs"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "wcag2",
+    "eaa",
+    "european-accessibility-act",
+    "en-301-549",
+    "compliance",
+    "lint",
+    "linter",
+    "static-analysis",
+    "audit",
+    "ci",
+    "jsx",
+    "vue"
+  ],
+  "homepage": "https://github.com/plainform/eaa-audit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plainform/eaa-audit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plainform/eaa-audit/issues"
+  },
+  "author": "Plainform (https://github.com/plainform)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "skills/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/run.mjs"
+  }
+}

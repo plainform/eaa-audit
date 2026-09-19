@@ -3,6 +3,8 @@
   "description": "Audit a web codebase against WCAG 2.1 AA and EN 301 549 (European Accessibility Act). Findings with file:line, each mapped to its WCAG criterion and EN clause.",
   "version": "0.1.0",
   "author": { "name": "Plainform", "url": "https://github.com/plainform" },
+  "homepage": "https://github.com/plainform/eaa-audit",
+  "repository": "https://github.com/plainform/eaa-audit",
   "keywords": ["accessibility", "a11y", "wcag", "eaa", "en-301-549", "compliance", "audit"],
   "license": "MIT"
 }

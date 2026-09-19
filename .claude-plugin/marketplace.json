@@ -1,5 +1,6 @@
 {
   "name": "eaa-audit",
+  "description": "Accessibility conformance tooling for the European Accessibility Act: source-level WCAG 2.1 AA and EN 301 549 audits.",
   "owner": { "name": "Plainform", "url": "https://github.com/plainform" },
   "plugins": [
     {
